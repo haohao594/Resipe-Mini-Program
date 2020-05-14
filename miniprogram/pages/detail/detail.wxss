@@ -1,0 +1,291 @@
+/* miniprogram/pages/detail/detail.wxss */
+page {
+  background: #e7e8e7;
+}
+.detail {
+  font-size: 28rpx; 
+}
+.detail .banner {
+  height: 500rpx;
+  overflow: hidden;
+}
+.detail .banner image {
+  width: 100%;
+  height: 100%;
+}
+.title {
+  background: #fff;
+  text-align: center;
+  padding: 40rpx 30rpx; 
+}
+
+.title>text:nth-child(1) {
+  font-size: 34rpx;
+  margin-bottom: 20rpx;
+  display: block;
+  color: #444;
+}
+.title .tags text {
+  display: inline-block;
+  border: 1px solid #ddd;
+  color: #777;
+  margin: 10rpx;
+  padding: 4rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+}
+.title .see {
+  font-size: 24rpx;
+  color: #777;
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title .see image {
+  width: 30rpx; 
+  margin-right: 10rpx;
+}
+.title .intro {
+  font-size: 24rpx;
+  color: #666;
+  padding-top: 30rpx;
+}
+
+.ingredients {
+  margin-top: 20rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+.ingredients text:nth-child(1) {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  padding: 20rpx;
+}
+
+.ingredients text:not(:first-child)  {
+  font-size: 28rpx;
+  padding: 10rpx 0;
+  color: #666;
+}
+
+.steps {
+  margin-top: 20rpx;
+  padding: 20rpx 30rpx;
+  background: #fff;
+}
+.steps .top {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  padding: 20rpx;
+}
+
+.steps .item {
+  padding: 30rpx 0;
+  text-align: center;
+}
+.steps .item text {
+  font-size: 32rpx;
+  color: #FF6262;
+  padding: 0 20rpx;
+  margin-bottom: 20rpx;
+  border-left: 8rpx solid #FF6262;
+  display: block;
+  text-align: left;
+}
+
+.steps .item view {
+  font-size: 28rpx;
+  color: #444;
+  padding: 20rpx 0; 
+}
+
+.collect { 
+  height: 100rpx;
+  width: 100rpx;
+  position: fixed;
+  top: 230rpx;
+  right: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  background: rgba(255, 255, 255, .4);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.collect image {
+  height: 50rpx;
+  width: 50rpx;
+}
+.collect text {
+  color: rgb(10, 0, 0);  
+}
+
+.collect button {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.1;
+}
+
+
+.share { 
+  height: 100rpx;
+  width: 100rpx;
+  position: fixed;
+  top: 120rpx;
+  right: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  background:rgba(255, 255, 255, .4);
+  border-radius: 50%;
+  z-index: 10;
+} 
+.share image {
+  height: 70rpx;
+  width: 70rpx;
+}
+.share text {
+  color: rgb(12, 1, 1);  
+}
+
+.share button {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.1;
+  z-index: 99;
+}
+
+.backhome { 
+  height: 100rpx;
+  width: 100rpx;
+  position: fixed;
+  top: 10rpx;
+  right: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  background: rgba(255, 255, 255, .4);
+  border-radius: 50%;
+  z-index: 10;
+} 
+.backhome image {
+  height: 60rpx;
+  width: 60rpx;
+}
+.backhome text {
+  color: #fff;  
+}
+
+/*评论样式*/
+
+.comment-button{
+  position: absolute;
+  height: 150rpx;
+  left: 600rpx;
+  width:150rpx;
+  font-size: 40rpx;
+}
+
+.box {
+  /* border: 0px solid #ddd;
+  margin: 0rpx 30rpx 40rpx 30rpx;
+  padding: 20rpx 30rpx 20rpx 270rpx; */
+  font-size: 28rpx;
+  height: 130rpx;
+  overflow: hidden;
+  position: relative; 
+  border-radius: 10rpx;
+  box-shadow: 1px 1px 6rpx #ccc; 
+}
+
+.box image {
+  height: 100rpx;
+  width: 100rpx; 
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+  border-radius: 10rpx;
+}
+
+
+/* .box view text {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-bottom: 10rpx;
+  color: #555;
+  font-size: 24rpx;
+} */
+
+
+.comment_name{
+  position: absolute;
+  top: 20rpx;
+  left: 140rpx;
+  color: #333;
+  font-weight: 600;
+  font-size: 30rpx;
+}
+.comment_insertTime{
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  font-size: 25rpx;
+}
+.comment_content{
+  position: absolute;
+  width:300rpx;
+  top: 70rpx;
+  left: 140rpx;
+  right: 100rpx;
+}
+.comment_delete{
+  position: absolute;
+  top: 70rpx;
+  right: 20rpx;
+}
+
+
+
+.release {
+  align-items: flex-end; /*底部对齐*/
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 18rpx 0 18rpx 30rpx;
+  background-color: #f7f8f7;
+  font-size: 28rpx;
+  z-index: 999;
+}
+
+.replyinfo2{ 
+  display: flex;
+  justify-content: space-between; /*两端对齐*/
+}
+.release .submit {
+  width: 120rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  color: #6c0;
+  margin: 0 3px;
+  padding: 0;
+}

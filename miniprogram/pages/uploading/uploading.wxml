@@ -1,0 +1,84 @@
+<!--miniprogram/pages/uploading/uploading.wxml-->
+
+<view>
+  <view>开始创造属于你的独家菜谱之旅</view>
+  <van-cell-group>
+    <van-field value="{{ title }}" bindinput='bindTitle' required type="textarea" autosize clearable label="菜品名" placeholder="请为您的菜品命名" bind:click-icon="onClickIcon" />
+    <van-field value="{{ desc }}" bindinput='bindDesc' required type="textarea" autosize clearable label="菜品简介" placeholder="请为您的菜品做个简单介绍" bind:click-icon="onClickIcon" />
+    <van-field value="{{ ingredients }}" bindinput='bindIngredients' required type="textarea" autosize clearable label="主料" placeholder="请输入主料" bind:click-icon="onClickIcon" />
+    <van-field value="{{ burden }}"  bindinput='bindBurden' required type="textarea" autosize clearable label="辅料" placeholder="请输入辅料" bind:click-icon="onClickIcon" />
+  </van-cell-group>
+  
+  <view>选择菜品类别</view>
+  <van-button type="primary" bindtap="openTags">点击选择菜品类别标签（再次点击可关闭）</van-button>
+  <view class='tags' >
+    <view>已选择的类别（点击标签可取消）：</view>
+    <text wx:for='{{tags}}' wx:key='{{index}}' bindtap="deleteTag" data-index='{{index}}'>{{item}}</text>
+  </view>
+  <view wx:if="{{tagsFlag==true}}">
+    <view class="block">
+      <view class="container" >
+        <!--左侧栏-->
+        <view class="nav_left" >
+          <block wx:for="{{cateItems}}" wx:key="id">
+            <!--当前项的id等于item项的id，那个就是当前状态-->
+            <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->
+            <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.cate_id}}">{{item.cate_name}}</view>
+          </block>
+        </view>
+        <!--右侧栏-->
+        <view class="nav_right">
+          <!--如果有数据，才遍历项-->
+          <view wx:if="{{cateItems[curIndex].ishaveChild}}">
+            <block wx:for="{{cateItems[curIndex].children}}" wx:key="id">
+              <view class="nav_right_items">
+              <!--界面跳转 -->
+                <!-- <image src="{{item.image}}"></image> -->
+                <!-- 目前id等参数名还未定，拟定大类bigClass，小类smallClass -->
+                <text data-tags='{{item.child_id}}' data-content='{{item.name}}' bindtap='addTags'>{{item.name}}</text>
+              </view>
+            </block>
+          </view>
+          <!--如果无数据，则显示数据-->
+          <view class="nodata_text" wx:else>该分类暂无数据</view>
+        </view>
+      </view>
+    </view>
+  </view>
+ 
+  
+
+  <view >
+    <view>上传菜谱封面图片:</view>
+    <button type="default" size="mini" bindtap="chooseImage" wx:if="{{images.length < 1}}">添加图片</button>
+    <view class="images">
+      <block>
+        <!-- 图片缩略图  -->
+        <image class="q-image" wx:for="{{images}}" wx:key="index" src="{{item}}"   data-idx="{{index}}" ></image>
+        <!-- 移除图片的按钮  -->
+        <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+      </block>
+    </view>
+  </view>
+
+  <view class='steps'> 
+    <text class='top'>菜谱的步骤</text>
+    <view class='item' wx:for='{{steps}}' wx:key='index' >
+      <text>第{{index + 1}}步</text>
+      <van-field v-model="message" rows="2" autosize label="步骤详情" type="textarea" value="{{ stepText }}" maxlength="50" placeholder="请输入留言" bindinput='bindText' data-index='{{index}}' show-word-limit />
+      <button type="default" size="mini" bindtap="chooseStepsImage"   data-index='{{index}}' wx:if="{{!stepImages[index]}}">添加图片</button>
+      <image src='{{stepImages[index]}}'></image>
+      <view>{{item.step}}</view>
+    </view> 
+  </view>
+
+  <view>
+    <van-button plain type="primary" bindtap="addStep">下一步</van-button>
+  </view>
+
+  <button bindtap="submit">submit</button>
+  <!-- <button bindtap="uploadFile1">uploadFile1</button>
+  <button bindtap="uploadFile2">uploadFile2</button>
+  <button bindtap="addFoods">addFoods</button>
+  <button bindtap="goDetail">goDetail</button> -->
+</view>

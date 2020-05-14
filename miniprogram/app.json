@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/index/index",
+    "pages/search/search",
+    "pages/list/list",
+    "pages/sort/sort",
+    "pages/detail/detail",
+    "pages/look/look",
+    "pages/collect/collect",
+    "pages/blogger/blogger",
+    "pages/work/work",
+    "pages/edit/edit",
+    "pages/uploading/uploading",
+    "pages/comment/comment"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "健康菜谱594",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#f00",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index-actived.png"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "text": "检索",
+        "iconPath": "images/search.png",
+        "selectedIconPath": "images/search-actived.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-actived.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

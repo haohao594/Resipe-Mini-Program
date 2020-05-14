@@ -1,0 +1,14 @@
+<scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower">
+  <view class='box' wx:for='{{list}}' wx:key='{{index}}' data-id='{{item._id}}' bindtap='goDetail'>
+    <image src='{{item.albums[0]}}'></image>
+    <view class='right'>
+      <text class='title'>{{item.title}}</text>
+      <text>原料：{{item.ingredients}}</text>
+      <text>用料：{{item.burden}}</text>
+      <view >
+        <text class='see'>{{item.count}} 人浏览</text>
+        <view class="button1" data-id='{{item._id}}'  data-index='{{index}}'catchtap='delete'>删除</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

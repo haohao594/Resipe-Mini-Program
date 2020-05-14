@@ -1,0 +1,61 @@
+/* miniprogram/pages/comment/comment.wxss */
+
+.box {
+  /* border: 0px solid #ddd;
+  margin: 0rpx 30rpx 40rpx 30rpx;
+  padding: 20rpx 30rpx 20rpx 270rpx; */
+  font-size: 28rpx;
+  height: 130rpx;
+  overflow: hidden;
+  position: relative; 
+  border-radius: 10rpx;
+  box-shadow: 1px 1px 6rpx #ccc; 
+}
+
+.box image {
+  height: 100rpx;
+  width: 100rpx; 
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+  border-radius: 10rpx;
+}
+
+
+/* .box view text {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-bottom: 10rpx;
+  color: #555;
+  font-size: 24rpx;
+} */
+
+
+.comment_name{
+  position: absolute;
+  top: 20rpx;
+  left: 140rpx;
+  color: #333;
+  font-weight: 600;
+  font-size: 30rpx;
+}
+.comment_insertTime{
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  font-size: 25rpx;
+}
+.comment_content{
+  position: absolute;
+  width:300rpx;
+  top: 70rpx;
+  left: 140rpx;
+  right: 100rpx;
+}
+.comment_delete{
+  position: absolute;
+  top: 70rpx;
+  right: 20rpx;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-field": "@vant/weapp/field",
+    "van-uploader": "@vant/weapp/uploader",
+    "van-button": "@vant/weapp/button",
+    "van-tree-select": "@vant/weapp/tree-select"
+  }
+}

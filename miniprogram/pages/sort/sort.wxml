@@ -1,0 +1,49 @@
+<view class='top'>
+  <text></text>
+  <view class='search' bindtap='goSearch'>
+    <image src='/images/layout/search1.png'></image>
+    <input placeholder='今天吃什么' disabled></input>
+  </view>
+</view>
+<!--主盒子-->
+<view class="container">
+  <!--左侧栏-->
+  <view class="nav_left">
+    <block wx:for="{{cateItems}}" wx:key="id">
+      <!--当前项的id等于item项的id，那个就是当前状态-->
+      <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->
+      <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.cate_id}}">{{item.cate_name}}</view>
+    </block>
+  </view>
+  <!--右侧栏-->
+  <view class="nav_right">
+    <!--如果有数据，才遍历项-->
+    <view wx:if="{{cateItems[curIndex].ishaveChild}}">
+      <block wx:for="{{cateItems[curIndex].children}}" wx:key="id">
+        <view class="nav_right_items">
+        <!--界面跳转 -->
+          <!-- <image src="{{item.image}}"></image> -->
+          <!-- 目前id等参数名还未定，拟定大类bigClass，小类smallClass -->
+          <text data-tags='{{item.child_id}}' data-content='{{item.name}}' bindtap='goList'>{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+    <!--如果无数据，则显示数据-->
+    <view class="nodata_text" wx:else>该分类暂无数据</view>
+  </view>
+</view>
+
+
+
+<!--miniprogram/pages/sort/sort.wxml-->
+<!-- <view class="menu">
+  <view class='item' wx:for='{{list}}' wx:key='{{index}}'>
+    <view class='title'>
+      <image src='/images/layout/tags.png'></image>
+      <text>{{item.name}}</text>
+    </view>
+    <view class='classic'>
+      <text wx:for='{{item.list}}' wx:key='{{index}}' data-tags='{{item.id}}'  data-content='{{item.name}}' bindtap='goList'>{{item.name}}</text> 
+    </view> 
+  </view> 
+</view> -->

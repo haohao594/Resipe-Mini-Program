@@ -1,0 +1,97 @@
+<!--miniprogram/pages/detail/detail.wxml-->
+<view class='detail' wx:if='{{isExit}}'>
+    <view class='banner'>
+      <image src='{{detail.albums[0]}}'  ></image>
+    </view>
+    <view class='title'>
+      <text>{{detail.title}}</text>
+      <view class='see'> <image src='/images/layout/see.png' mode='widthFix'></image> {{detail.count}} 人浏览 || 菜谱来源:<view data-id='{{detail._openid}}' data-authorName='{{detail.authorName}}' bindtap='goBlogger'>{{detail.authorName}}</view></view>
+      <view class='tags'>
+        <text wx:for='{{tags}}' wx:key='{{index}}'>{{item}}</text>
+      </view>
+      <view class='intro'>
+        {{detail.desc}}
+      </view>
+    </view>
+
+    <view class='ingredients'>
+      <text>主料</text> 
+      <text wx:for='{{ingredients}}' wx:key='{{index}}'>{{item}}</text>
+    </view>
+
+    <view class='ingredients'>
+      <text>辅料</text>
+      <text wx:for='{{burden}}' wx:key='{{index}}'>{{item}}</text>
+    </view>
+
+    <view class='steps'> 
+      <text class='top'>步骤</text>
+      <view class='item' wx:for='{{detail.steps}}' wx:key='{{index}}'>
+        <text>第{{index + 1}}步</text>
+        <image src='{{item.img}}'></image>
+        <view>{{item.step}}</view>
+      </view> 
+    </view>
+
+    <view>
+      <button bindtap='loadComment'>评论专区</button>
+      精彩热评
+      <scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower">
+        <view class='box' wx:for='{{list}}' wx:key='{{index}}'>
+          <image src='{{item.comment_AuthorUrl}}'></image>
+          <view class='right'>
+            <view class='comment_name'>{{item.comment_AuthorName}}</view>
+            <view class='comment_insertTime'>{{item.insertTime}}</view>
+            <view class='comment_content'> {{item.content}}</view>
+            <view wx:if="{{item._openid==_openid}}" class="comment_delete" data-id='{{item._id}}' catchtap='comment_delete'>删除</view>
+          </view>
+        </view>
+      </scroll-view>
+
+      <view>
+        <view class="comment-button"></view>
+      </view>
+
+    </view>
+</view>
+
+
+<view wx:if="{{true}}" class="release">
+  <view class="replyinfo2">
+    <!-- <textarea  fixed="true"   auto-height="true" placeholder="请输入回复"  value="{{ message }}"  bindinput='bindTitle'></textarea> -->
+    <textarea value="{{ message }}" placeholder-class="input_null" fixed="true" maxlength="40" show-confirm-bar="false" cursor-spacing="15" auto-height="true" placeholder="请给出您的评价" bindinput='bindTitle'></textarea>
+    <button form-type="submit" class="submit" bindtap='submitComment'>发送</button>
+  </view>
+</view>
+
+
+
+<!-- 首页 -->
+<view class='backhome' bindtap='onBackhome'>
+  <image src='/images/layout/index-active.png'></image>
+  <!-- <text>首页</text> -->
+</view>
+
+<!-- 分享 -->
+<view class='share'>
+  <image src='/images/layout/share.png'></image>
+  <text>分享</text>
+  <button open-type='share'></button>
+</view>
+
+<!-- 用户未登录 -->
+<view class='collect' wx:if='{{!logged}}' style='z-index:11;background: rgba(0, 0, 0, .1);'>
+  <button open-type="getUserInfo" bindgetuserinfo='getUser' style='border:1;'></button>
+</view>
+
+<!-- 用户已登录 -->
+<view class='collect' catchtap='bindCollect' >
+  <image  wx:if='{{isCollect}}' src='/images/homeIcon/icon_like.png'></image>
+  <image wx:if='{{!isCollect}}' src='/images/layout/collect.png'></image>
+  <text wx:if='{{isCollect}}'>收藏</text>
+  <text wx:if='{{!isCollect}}'>已收藏</text>
+</view>
+
+<view class='no-list' wx:if="{{!isExit}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+  <text style='color:#666;'>--- 未找到您搜索的菜品 ---</text>
+</view>

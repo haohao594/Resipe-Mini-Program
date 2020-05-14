@@ -1,0 +1,56 @@
+<!--miniprogram/pages/edit/edit.wxml-->
+<view class='detail' wx:if='{{isExit}}'>
+    <view class='banner'>
+      <image src='{{detail.albums[0]}}'  ></image>
+    </view>
+    <view class='title'>
+      <text>{{detail.title}}</text>
+      <view class='see'> <image src='/images/layout/see.png' mode='widthFix'></image> {{detail.count}} 人浏览 || 菜谱来源:<view data-id='{{detail.authorId}}'>{{detail.authorName}}</view></view>
+      <view class='tags'>
+        <text wx:for='{{tags}}' wx:key='{{index}}'>{{item}}</text>
+      </view>
+
+      <view class='intro'>
+        <!-- <van-field v-model="message" rows="2" autosize label="步骤详情" type="textarea" value="{{detail.desc}}" maxlength="50" placeholder="{{detail.desc}}" bindinput='onChangeDesc' data-index='{{index}}' show-word-limit /> -->
+      </view>
+      <van-field v-model="message" rows="2" autosize label="点击右方简介进行更改" type="textarea" value="{{detail.desc}}" maxlength="50" placeholder="{{detail.desc}}" bindinput='onChangeDesc' data-index='{{index}}' show-word-limit />
+    </view>
+    <view class='ingredients'>
+      <text>主料</text> 
+      <van-field v-model="message" rows="2" autosize label="点击右方主料进行更改" type="textarea" value="{{ingredients}}" maxlength="50" placeholder="{{ingredients}}" bindinput='onChangeIngredients' data-index='{{index}}' show-word-limit />
+    </view>
+    <view class='ingredients'>
+      <text>辅料</text>
+      <van-field v-model="message" rows="2" autosize label="点击右方辅料进行更改" type="textarea" value="{{burden}}" maxlength="50" placeholder="{{burden}}" bindinput='onChangeBurden' data-index='{{index}}' show-word-limit />
+    </view>
+    <view class='steps'> 
+      <text class='top'>步骤</text>
+      <view class='item' wx:for='{{detail.steps}}' wx:key='{{index}}'>
+        <text>第{{index + 1}}步</text>
+        <image src='{{item.img}}'></image>
+        <!-- <view>{{item.step}}</view> -->
+        <van-field v-model="message" rows="2" autosize label="点击右方进行更改" type="textarea" value="{{item.step}}" maxlength="50" placeholder="{{item.step}}" bindinput='bindText'                   data-index='{{index}}' show-word-limit />
+        <!-- <van-cell-group>
+          <van-field
+            value="{{ item.step }}"
+            placeholder="请输入菜谱步骤详情"
+            border="{{ false }}"
+            bind:change="onChangeStep"
+          />
+        </van-cell-group> -->
+      </view> 
+    </view>
+    <button bindtap="submit">submit</button>
+</view>
+
+
+<!-- 首页 -->
+<view class='backhome' bindtap='onBackhome'>
+  <image src='/images/layout/index-active.png'></image>
+  <!-- <text>首页</text> -->
+</view>
+
+
+<view class='no-list' wx:if="{{!isExit}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+  <text style='color:#666;'>--- 未找到您搜索的菜品 ---</text>
+</view>
